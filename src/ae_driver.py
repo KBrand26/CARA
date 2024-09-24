@@ -171,7 +171,6 @@ class ExperimentRunner():
             self.ae.eval()
             
             self.images = np.array([])
-            self.latents = np.array([])
             self.reconstructions = np.array([])
             self.true_labels = np.array([])
             self.labels = np.array([])
@@ -191,19 +190,16 @@ class ExperimentRunner():
                     batch_x = batch_x.detach().cpu().numpy()
                     batch_y = batch_y.detach().cpu().numpy()
                     batch_y_true = batch_y_true.detach().cpu().numpy()
-                    latent = latent.detach().cpu().numpy()
                     recon = recon.detach().cpu().numpy()
 
                     if first:
                         self.images = batch_x
-                        self.latents = latent
                         self.reconstructions = recon
                         self.true_labels = batch_y_true
                         self.labels = batch_y
                         first = False
                     else:
                         self.images = np.concatenate([self.images, batch_x])
-                        self.latents = np.concatenate([self.latents, latent])
                         self.reconstructions = np.concatenate([self.reconstructions, recon])
                         self.true_labels = np.concatenate([self.true_labels, batch_y_true])
                         self.labels = np.concatenate([self.labels, batch_y])
@@ -213,7 +209,6 @@ class ExperimentRunner():
                 exist_ok=True
             )
             np.save(f"saved_ae_data/{self.run_name}/train_images.npy", self.images)
-            np.save(f"saved_ae_data/{self.run_name}/train_latents.npy", self.latents)
             np.save(f"saved_ae_data/{self.run_name}/train_recons.npy", self.reconstructions)
             np.save(f"saved_ae_data/{self.run_name}/train_true_labels.npy", self.true_labels)
             np.save(f"saved_ae_data/{self.run_name}/train_labels.npy", self.labels)
@@ -226,7 +221,6 @@ class ExperimentRunner():
         self.ae.eval()
         
         self.images = np.array([])
-        self.latents = np.array([])
         self.reconstructions = np.array([])
         self.true_labels = np.array([])
         self.labels = np.array([])
@@ -248,12 +242,10 @@ class ExperimentRunner():
                 batch_y = batch_y.detach().cpu().numpy()
                 batch_y_true = batch_y_true.detach().cpu().numpy()
                 batch_src  = np.array(batch_src)
-                latent = latent.detach().cpu().numpy()
                 recon = recon.detach().cpu().numpy()
                 
                 if first:
                     self.images = batch_x
-                    self.latents = latent
                     self.reconstructions = recon
                     self.true_labels = batch_y_true
                     self.labels = batch_y
@@ -261,7 +253,6 @@ class ExperimentRunner():
                     first = False
                 else:
                     self.images = np.concatenate([self.images, batch_x])
-                    self.latents = np.concatenate([self.latents, latent])
                     self.reconstructions = np.concatenate([self.reconstructions, recon])
                     self.true_labels = np.concatenate([self.true_labels, batch_y_true])
                     self.labels = np.concatenate([self.labels, batch_y])
@@ -273,7 +264,6 @@ class ExperimentRunner():
                 exist_ok=True
             )
             np.save(f"saved_ae_data/{self.run_name}/val_images.npy", self.images)
-            np.save(f"saved_ae_data/{self.run_name}/val_latents.npy", self.latents)
             np.save(f"saved_ae_data/{self.run_name}/val_recons.npy", self.reconstructions)
             np.save(f"saved_ae_data/{self.run_name}/val_true_labels.npy", self.true_labels)
             np.save(f"saved_ae_data/{self.run_name}/val_labels.npy", self.labels)
@@ -322,7 +312,6 @@ class ExperimentRunner():
         self.ae.eval()
         
         self.images = np.array([])
-        self.latents = np.array([])
         self.reconstructions = np.array([])
         self.true_labels = np.array([])
         self.labels = np.array([])
@@ -345,12 +334,10 @@ class ExperimentRunner():
                 batch_y = batch_y.detach().cpu().numpy()
                 batch_y_true = batch_y_true.detach().cpu().numpy()
                 batch_src  = np.array(batch_src)
-                latent = latent.detach().cpu().numpy()
                 recon = recon.detach().cpu().numpy()
                 
                 if first:
                     self.images = batch_x
-                    self.latents = latent
                     self.reconstructions = recon
                     self.true_labels = batch_y_true
                     self.labels = batch_y
@@ -358,7 +345,6 @@ class ExperimentRunner():
                     first = False
                 else:
                     self.images = np.concatenate([self.images, batch_x])
-                    self.latents = np.concatenate([self.latents, latent])
                     self.reconstructions = np.concatenate([self.reconstructions, recon])
                     self.true_labels = np.concatenate([self.true_labels, batch_y_true])
                     self.labels = np.concatenate([self.labels, batch_y])
@@ -370,7 +356,6 @@ class ExperimentRunner():
                 exist_ok=True
             )
             np.save(f"saved_ae_data/{self.run_name}/test_images.npy", self.images)
-            np.save(f"saved_ae_data/{self.run_name}/test_latents.npy", self.latents)
             np.save(f"saved_ae_data/{self.run_name}/test_recons.npy", self.reconstructions)
             np.save(f"saved_ae_data/{self.run_name}/test_true_labels.npy", self.true_labels)
             np.save(f"saved_ae_data/{self.run_name}/test_labels.npy", self.labels)
@@ -447,13 +432,13 @@ class ExperimentRunner():
 
 if __name__ == "__main__":    
     # Run MemSCAE with sparsity
-    # runner = ExperimentRunner(runs=10, scae=True, resample=True, filtering=True, flatten=True, memory=True, save=True, epochs=30)
-    # runner.execute_experiment(shrink=0.002, entropy=False, mem_size=500)
+    runner = ExperimentRunner(runs=10, scae=True, resample=True, filtering=True, flatten=True, memory=True, save=True, epochs=30)
+    runner.execute_experiment(shrink=0.002, entropy=False, mem_size=500)
     
-    # # Run SCAE experiment
+    # Run SCAE experiment
     # runner = ExperimentRunner(runs=10, scae=True, flatten=True, memory=False, save=True, epochs=30)
     # runner.execute_experiment()
     
     # Run BCAE experiment
-    runner = ExperimentRunner(runs=10, scae=False, memory=False, save=True, epochs=30)
-    runner.execute_experiment()
+    # runner = ExperimentRunner(runs=10, scae=False, memory=False, save=True, epochs=30)
+    # runner.execute_experiment()

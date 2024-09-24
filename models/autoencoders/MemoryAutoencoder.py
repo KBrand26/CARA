@@ -188,4 +188,4 @@ class MemoryAutoencoder(pl.LightningModule):
             loss = recon_loss
             self.log('val_loss', loss)
         
-        return recon
+        return attent, recon
