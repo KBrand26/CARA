@@ -1,0 +1,4 @@
+# Directory structure
+ - **CleanDataModule.py**: A PyTorch Lightning datamodule that contains all of the logic necessary for preparing and using the samples of FRI and FRII galaxies required to train the autoencoder.
+ - **MetricsDataModule.py**: This datamodule contains the logic for preparing and loading the metrics outputs from trained autoencoders. It should be used with the machine learning models for anomaly detection.
+ - **PCADataModule.py**: This datamodule contains the logic for preprocessing the original radio galaxy images, applying PCA to them to reduce their dimensionality, preparing the PCA components and loading them for use with anomaly detection machine learning models.

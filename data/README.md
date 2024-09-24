@@ -1,0 +1,4 @@
+# Directory structure
+ - **datamodules/**: Contains the data modules that will be used to handle the logic regarding loading and feeding the various datasets into the various models.
+ - **datasets/**: Contains the PyTorch Lightning datasets for feeding the data into the autoencoders during training, validation and testing.
+ - **create_holdout_test.py**: This script has to be executed before any model training or evaluation can be done to split the holdout testing set from the training data. Once this script has been executed, it should not be executed again until all experiments have been conducted, because the holdout test set should be kept constant for a fair evaluation of model performance.

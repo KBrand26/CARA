@@ -1,3 +1,6 @@
+data/FRGADB/*
+data/FRGADB_Numpy/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
