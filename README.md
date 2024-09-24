@@ -10,9 +10,9 @@ https://zenodo.org/records/13773680
 and download it into the **data/** directory.
 
 ## Prepare dataset
-If you want to use the datamodules in this repository, you will need to execute **restructure_data.py** from the **data/** first. This will simply restructure the FRGADB dataset such that it is compatible with the existing datamodules.
+If you want to use the datamodules in this repository, you will need to execute **restructure_data.py** from the **data/** directory first. This will simply restructure the FRGADB dataset such that it is compatible with the existing datamodules.
 
-This should be followed by executing **create_holdout_test.py**, which will generate the holdout test set. This script should be executed prior to running any experiments and should not be executed again until all experiments have been executed.
+This should be followed by executing **create_holdout_test.py**, which will generate the holdout test set. This script should be executed prior to running any experiments and should not be executed again until all experiments have been conducted.
 
 # Project layout
 

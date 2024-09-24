@@ -1,0 +1,3 @@
+# Directory structure
+ - **autoencoders/**: Contains the PyTorch implementations of the various autoencoder architectures. This includes the BCAE Encoder/Decoder, the SCAE Encoder/Decoder and the Memory Units necessary for MemSCAE.
+ - **ml**: This directory contains wrappers for the various machine learning models that will be used for anomaly detection. If you conduct your own hyperparameter sweeps you will need to change each model's tuned hyperparameters in these wrappers.
