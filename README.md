@@ -20,4 +20,4 @@ This should be followed by executing **create_holdout_test.py**, which will gene
   - **models/**: Contains all of the model architectures, hyperparameters and logic.
   - **src/**: Contains the experiment drivers which conduct the experiments.
 
-For more information, refer to the README files in each of these directories. For instructions regarding suggested usage, refer to the README in the src/ directory.
+For more information, refer to the README files in each of these directories. For instructions regarding suggested usage, refer to the README in the **src/** directory.
